@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-tender-service
+spec:
+  selector:
+    app: flask-tender-app
+  ports:
+  - protocol: TCP
+    port: 80    # External port
+    targetPort: 8080  # Flask app's container port
+  type: LoadBalancer  # For external exposure

@@ -1,0 +1,10 @@
+.idea
+*.iml
+.git/
+.gradle
+gradle
+out/
+Dockerfile
+**/__pycache__
+*.pyc
+*.pyo

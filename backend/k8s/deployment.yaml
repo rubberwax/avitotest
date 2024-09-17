@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-tender-app
+  labels:
+    app: flask-tender-app
+spec:
+  replicas: 3  # Number of instances you want to run
+  selector:
+    matchLabels:
+      app: flask-tender-app
+  template:
+    metadata:
+      labels:
+        app: flask-tender-app
+    spec:
+      containers:
+      - name: flask-tender-app
+        image: <your-docker-username>/flask-tender-app:latest  # Use the image you pushed
+        ports:
+        - containerPort: 8080  # Flask app is running on port 8080 inside the container
+        env:
+        - name: FLASK_ENV
+          value: "production"
+        # Define resources for the container (optional)
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
